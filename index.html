@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Lion Des Mers - Location de bateau et balades en mer</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+  }
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+  }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1rem;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  .nav-links a:hover {
+    color: #0066cc;
+  }
+  .nav-links .reservation {
+    background-color: #0066cc;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+  }
+  .hero {
+    height: 100vh;
+    background-image: url('assets/IMG-20240927-WA0011.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-content {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  section {
+    padding: 4rem 1rem;
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .photo-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+  .video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  .video-container iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    border: none;
+    border-radius: 10px;
+  }
+  .services {
+    background-color: #f4f4f4;
+  }
+  .services ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  .services li {
+    background-color: white;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .contact {
+    text-align: center;
+  }
+  .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .contact-links a {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .contact-links i {
+    font-size: 1.5rem;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    header {
+      padding: 0.5rem;
+    }
+    nav {
+      justify-content: space-between;
+    }
+    .menu-toggle {
+      display: block;
+    }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+    }
+    .nav-links.show {
+      display: flex;
+    }
+    .hero h1 {
+      font-size: 2rem;
+    }
+    .photo-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    .video-container iframe {
+      height: 56.25vw;
+      max-height: 315px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .logo {
+      width: 50px;
+      height: 50px;
+    }
+    .nav-links a {
+      font-size: 0.9rem;
+    }
+    .hero h1 {
+      font-size: 1.5rem;
+    }
+    .hero p {
+      font-size: 0.9rem;
+    }
+    section {
+      padding: 2rem 0.5rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+<script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="assets/IMG-20240927-WA0008.jpg" alt="Logo Le Lion Des Mers">
+      </div>
+      <div class="nav-links">
+        <a href="#photos">Photos</a>
+        <a href="#videos">Vidéos</a>
+        <a href="#services">Services</a>
+        <a href="#contact" class="reservation">Réservation</a>
+      </div>
+      <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Le Lion Des Mers</h1>
+      <p>Découvrez la beauté de la mer avec nos locations de bateaux et balades inoubliables</p>
+    </div>
+  </section>
+
+  <section id="photos">
+    <h2>Nos Plus Belles Photos</h2>
+    <div class="photo-grid">
+      <img src="assets/IMG-20240927-WA0010.jpg" alt="Bateau sur une mer calme au coucher du soleil">
+      <img src="assets/IMG-20240927-WA0009.jpg" alt="Groupe de personnes profitant d'une balade en mer">
+      <img src="assets/IMG-20240927-WA0007.jpg" alt="Vue aérienne d'un bateau dans une crique turquoise">
+      <img src="assets/IMG-20240927-WA0006.jpg" alt="Plongée sous-marine près d'un récif corallien">
+      <img src="assets/IMG-20240927-WA0005.jpg" alt="Couple sur le pont d'un bateau admirant le paysage">
+      <img src="assets/IMG-20240927-WA0004.jpg" alt="Pêche sportive en haute mer">
+      <img src="assets/IMG-20240927-WA0003.jpg" alt="Coucher de soleil spectaculaire vu depuis un bateau">
+      <img src="assets/IMG-20240927-WA0002.jpg" alt="Famille s'amusant lors d'une sortie en mer">
+    </div>
+  </section>
+
+  <section id="videos">
+    <h2>Nos Vidéos</h2>
+    <div class="video-container">
+      <iframe src="assets/VID-20240927-WA0001.mp4" title="Découvrez nos balades en mer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe src="assets/WhatsApp Vidéo 2024-09-27 à 19.31.13_6c74e97e.mp4" title="Location de bateaux avec Le Lion Des Mers" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <h2>Nos Services</h2>
+    <ul>
+      <li><h3 style="color: black;">Le Lion des Mers</h3>
+              
+        <p style="color: black; font-size: 1.1rem;">
+            <strong>Émerveillez-vous à bord du Lion des Mers</strong>, un bateau d'exception d'une longueur de 13 mètres,
+            pouvant accueillir jusqu'à 10 personnes pour une expérience unique.
+        </p>
+    
+        <h4 style="color: black;">Pourquoi choisir le Lion des Mers ?</h4>
+        <ul style="color: black; padding-left: 1.5rem;">
+            <li>🚤 <strong>Expérience inoubliable :</strong> Profitez d'une après-midi inoubliable en famille ou entre amis dans la baie de Dakar.</li>
+            <li>🌊 <strong>Nature et beauté :</strong> Découvrez la splendeur de la nature sous-marine et les vues époustouflantes sur l'océan.</li>
+            <li>🧘‍♂️ <strong>Tranquillité :</strong> Vivez un moment de tranquillité loin du tumulte quotidien.</li>
+        </ul>
+    
+        <h4 style="color: black;">Une expérience magique</h4>
+        <p style="color: black; font-style: italic;">
+            Laissez-vous transporter par la splendeur des paysages marins et par la sensation de détente qui vous envahit. 
+            Comme l'a si bien dit <em>Nicolas Hulot</em> : 
+            <br><strong>« Vagabonder à la surface des océans est souvent source de sérénité et, parfois, permet de tutoyer ses rêves »</strong>.
+        </p>
+    
+        <div style="text-align: center; margin-top: 20px;">
+            <h4 style="color: black;">Réservez dès maintenant</h4>
+            <p style="color: black;">
+                <strong>Disponible à partir de Septembre 2024.</strong> Pour plus d'informations et pour réserver votre expérience à bord du Lion des Mers :
+                <br><a href="https://wa.me/221778149696" style="color: blue; font-weight: bold;">WhatsApp au 77 814 96 96</a>.
+            </p></li>
+    </ul>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Réservation et Contact</h2>
+    <p>Pour réserver ou obtenir plus d'informations, n'hésitez pas à nous contacter :</p>
+    <div class="contact-links">
+      <a href="tel:+221778149696"><i class="fas fa-phone"></i> +221 77 814 96 96</a>
+      <a href="https://wa.me/221778149696"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="https://www.instagram.com/le.lion.des.mers"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('nav') && navLinks.classList.contains('show')) {
+        navLinks.classList.remove('show');
+      }
+    });
+
+    // Close menu when resizing to larger screen
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && navLinks.classList.contains('show')) {
+        navLinks.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+</html>

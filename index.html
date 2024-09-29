@@ -61,7 +61,7 @@
   }
   .hero {
     height: 100vh;
-    background-image: url('assets/IMG-20240927-WA0011.jpg');
+    background-image: url('assets/IMG-20240927-WA0004.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -74,11 +74,14 @@
     padding: 2rem;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    transform: translateY(-80%); /* Remonté encore plus le cadre */
+    transform: translateY(-80%);
   }
   .hero h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+  }
+  .hero p {
+    font-size: 1.2rem; /* Augmentation de la taille du texte sous le titre */
   }
   section {
     padding: 4rem 1rem;
@@ -131,9 +134,16 @@
     padding: 1rem;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 1.1rem; /* Augmentation de la taille du texte des services */
   }
   .contact {
     text-align: center;
+    background: linear-gradient(to right, #003366, #0099cc);
+    color: white;
+    padding: 4rem 1rem;
+  }
+  .contact h2 {
+    color: white;
   }
   .contact-links {
     display: flex;
@@ -144,10 +154,14 @@
   }
   .contact-links a {
     text-decoration: none;
-    color: #333;
+    color: white;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    transition: opacity 0.3s ease;
+  }
+  .contact-links a:hover {
+    opacity: 0.8;
   }
   .contact-links i {
     font-size: 1.5rem;
@@ -189,6 +203,9 @@
     .hero h1 {
       font-size: 2rem;
     }
+    .hero p {
+      font-size: 1.1rem; /* Ajustement pour mobile */
+    }
     .photo-grid {
       grid-template-columns: 1fr;
     }
@@ -197,6 +214,9 @@
     }
     .video-container video {
       max-width: 100%;
+    }
+    .services li {
+      font-size: 1rem; /* Ajustement pour mobile */
     }
   }
 
@@ -212,7 +232,7 @@
       font-size: 1.5rem;
     }
     .hero p {
-      font-size: 0.9rem;
+      font-size: 1rem; /* Ajustement pour petit mobile */
     }
     section {
       padding: 2rem 0.5rem;
@@ -222,6 +242,9 @@
     }
     .photo-grid img {
       height: 300px;
+    }
+    .services li {
+      font-size: 0.9rem; /* Ajustement pour petit mobile */
     }
   }
 </style>
@@ -245,20 +268,20 @@
 
   <section class="hero">
     <div class="hero-content">
-      <h1>Le Lion Des Mers</h1>
-      <p>Partagez un moment détente en famille ou entre amis et decouvrez la beauté de la mer avec nos balades inoubliables</p>
+      <h1>Bateau Le Lion Des Mers</h1>
+      <p>Partagez un moment de détente en famille ou entre amis et découvrez la beauté de la mer avec nos balades inoubliables</p>
     </div>
   </section>
 
   <section id="photos">
-    <h2>L'Aventure En Image</h2>
+    <h2>L'aventure en image</h2>
     <div class="photo-grid">
       <img src="assets/IMG-20240927-WA0010.jpg" alt="Bateau sur une mer calme au coucher du soleil">
       <img src="assets/IMG-20240927-WA0009.jpg" alt="Groupe de personnes profitant d'une balade en mer">
       <img src="assets/IMG-20240927-WA0007.jpg" alt="Vue aérienne d'un bateau dans une crique turquoise">
       <img src="assets/IMG-20240927-WA0006.jpg" alt="Plongée sous-marine près d'un récif corallien">
       <img src="assets/IMG-20240927-WA0005.jpg" alt="Couple sur le pont d'un bateau admirant le paysage">
-      <img src="assets/IMG-20240927-WA0004.jpg" alt="Pêche sportive en haute mer">
+      <img src="assets/IMG-20240927-WA0011.jpg" alt="Pêche sportive en haute mer">
       <img src="assets/IMG-20240927-WA0003.jpg" alt="Coucher de soleil spectaculaire vu depuis un bateau">
       <img src="assets/IMG-20240927-WA0002.jpg" alt="Famille s'amusant lors d'une sortie en mer">
     </div>
@@ -281,7 +304,11 @@
   <section id="services" class="services">
     <h2>Nos Services</h2>
     <ul>
-      <li><h3 style="color: black;">Le Lion des Mers</h3>
+      <li>
+        <div class="logo">
+          <img src="assets/IMG-20240927-WA0008.jpg" alt="Logo Le Lion Des Mers">
+        </div>
+        <h3 style="color: black;">Le Lion des Mers</h3>
               
         <p style="color: black; font-size: 1.1rem;">
             <strong>Émerveillez-vous à bord du Lion des Mers</strong>, un bateau d'exception d'une longueur de 13 mètres,
@@ -315,8 +342,7 @@
     <h2>Réservation et Contact</h2>
     <p>Pour réserver ou obtenir plus d'informations, n'hésitez pas à nous contacter :</p>
     <div class="contact-links">
-      <a href="tel:+221778149696"><i class="fas fa-phone"></i> Tel: +221 77 814 96 96</a>
-      <a href="https://wa.me/221778149696"><i class="fab fa-whatsapp"></i> WhatsApp: +221 77 814 96 96</a>
+      <a href="https://wa.me/221778149696"><i class="fab fa-whatsapp"></i> Téléphone/WhatsApp: +221 77 814 96 96</a>
       <a href="https://www.instagram.com/le.lion.des.mers"><i class="fab fa-instagram"></i> Instagram: le.lion.des.mers</a>
     </div>
   </section>
@@ -350,7 +376,6 @@
       }
     });
 
-    // Nouvelle animation des photos avec transition verticale et plus douce
     const photoGrid = document.querySelector('.photo-grid');
     const photos = photoGrid.querySelectorAll('img');
 
@@ -363,7 +388,7 @@
         if (photoTop < triggerBottom) {
           setTimeout(() => {
             photo.classList.add('visible');
-          }, index * 200); // Délai progressif plus long pour une transition plus douce
+          }, index * 200);
         } else {
           photo.classList.remove('visible');
         }
@@ -372,7 +397,7 @@
 
     window.addEventListener('scroll', checkPhotos);
     window.addEventListener('resize', checkPhotos);
-    checkPhotos(); // Vérification initiale
+    checkPhotos();
   </script>
 </body>
 </html>
